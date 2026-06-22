@@ -16,107 +16,68 @@
     4. Do NOT use return in a void function!
 
 */
-
-#include <stdio.h>
+include <stdio.h>
 #include <stdlib.h>
-
-// include your own stack header file
 #include "stack.h"
-
-
-/*
-    EACH FUNCTION DEFINITION MUST BE PRECEDED BY A INLINE DOCUMENTATION CONTAINING THE FOLLOWING:
-
-    a. Name of Programmer(s)
-    b. Name of Tester(s) -- for an unbiased black box testing, the tester should NOT be the same person as the programmer.
-    c. Code Type -- indicate EXPLICITLY if the code is one of the following: 100% Human Generated code, 100% AI Generated code
-       or a modified AI generated code.  If it is a modified AI generated code, indicate explicitly which lines were 
-       modified and the reason why a line of code had to be modified.
-    d. Purpose -- indicate the purpose of the function
-    e. Return -- indicate what will be returned (type None for void functions)
-    f. Parameters -- indicate the nature of the parameters
-
-    An example is shown below.  
-
-    Remove the Sample() function in your own C source code.
-*/
-
-
-/*
-    a. Name of Programmer(s):  Juan de la Cruz, Anna Santos
-    b. Name of Tester(s)    :  Ichiro Makino
-    c. Code Type -- 100% Human Generated 
-    d. Purpose: this function will ....
-    e. Return: None
-    f. Parameters: x is the ...    
-*/
-
-void EXIT()
-{
-    return EXIT_FAILURE;
-}
-
-void CREATE (Stack *S)
+ 
+void CREATE(Stack *S)
 {
     (*S).top = -1;
 }
-
-void PUSH (Stack *S, Point elem)
-{
-    if(ISFULL(S))
-    {
-        fprintf(stderr, "STACK OVERFLOW!");
-        exit(EXIT);
-    }
-        (*S).top++;
-        (*S).data[S->top] = elem;
-}
-
-Point POP (Stack *S)
-{
-    if(ISEMPTY(S))
-    {
-        fprintf(stderr, "STACK EMPTY!");
-        exit(EXIT);
-    }
-    Point elem = (*S).data[S->top];
-    (*S).top--;
-    return elem;
-}
-
-Point TOP (Stack *S)
-{
-    if(ISEMPTY(S))
-    {
-        fprintf(stderr, "STACK EMPTY!");
-        exit(EXIT);
-    }
-    else 
-    {
-        return (*S).data[S->top];
-    }
-}
-
+ 
 int ISFULL(Stack *S)
 {
     return ((*S).top == MAX - 1);
 }
-
+ 
 int ISEMPTY(Stack *S)
 {
-    return((*S).top == -1);
+    return ((*S).top == -1);
+}
+ 
+void PUSH(Stack *S, Point elem)
+{
+    if (ISFULL(S)) {
+        fprintf(stderr, "STACK OVERFLOW!\n");
+        exit(EXIT_FAILURE);
+    }
+ 
+    (*S).top++;
+    (*S).data[(*S).top] = elem;
+}
+ 
+Point POP(Stack *S)
+{
+    Point elem;
+ 
+    if (ISEMPTY(S)) {
+        fprintf(stderr, "STACK EMPTY!\n");
+        exit(EXIT_FAILURE);
+    }
+ 
+    elem = (*S).data[(*S).top];
+    (*S).top--;
+ 
+    return elem;
 }
 
+Point TOP(Stack *S)
+{
+    if (ISEMPTY(S)) {
+        fprintf(stderr, "STACK EMPTY!\n");
+        exit(EXIT_FAILURE);
+    }
+ 
+    return (*S).data[(*S).top];
+}
+ 
 Point NEXT_TO_TOP(Stack *S)
 {
-    if((*S).top > 1)
-    {
+    if ((*S).top < 1) {   
         fprintf(stderr, "NOT ENOUGH ELEMENTS\n");
-        exit(EXIT);
+        exit(EXIT_FAILURE);
     }
-    return (*S).data[(*S).top - 1]; 
+ 
+    return (*S).data[(*S).top - 1];
 }
-
-
-
 
