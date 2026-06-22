@@ -57,8 +57,4 @@ int ISEMPTY (Stack *S);
 Point NEXT_TO_TOP (Stack *S);
 
 #endif
-
-
-// you may include other header files
-
   
