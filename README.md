@@ -1,6 +1,6 @@
-#**HOW TO COMPILE GUIDE HEHE**
+# **HOW TO COMPILE GUIDE HEHE**
 
-##**MCO2**
+## **MCO2**
 
 **1. gcc -Wall -o 12Main main.c graph.c queue.c traversal.c**
 
@@ -14,7 +14,7 @@
 
 **4. Check ur folder for the files**
 
-##**Bonus!**
+## **Bonus!**
 
 **1. gcc -Wall -o bonus12 12-BONUS.c graph.c**
 
@@ -28,6 +28,6 @@
 
 **4. Check ur folder for the files**
 
-#*Daz all gang*
+# *Daz all gang*
 
 
