@@ -1,5 +1,5 @@
 #include <string.h>
-#include "traversals.h"
+#include "traversal.h"
 #include "queue.h"
 
 static void sortNeighbors(const Graph *g, int neighbors[], int count){
