@@ -143,7 +143,7 @@ static int subgraphs(const char *outFile,
     allVerticesOk = 1;
     allEdgesOk = 1;
 
-    /* --- vertices of 'second', alphabetical, marked +/- --- */
+    /* marks +/- */
     SortIndicesByLabel(second, idxOrder);
     for (i = 0; i < second->numVertices; i++) {
         const char *label = second->vertices[idxOrder[i]].label;
@@ -154,7 +154,7 @@ static int subgraphs(const char *outFile,
         fprintf(fp, "%s %s\n", label, inFirst ? "+" : "-");
     }
 
-    /* --- edges of 'second', alphabetical, marked +/- --- */
+    /* marks +/- part 2 */
     edgeCount = BuildEdgeList(second, edges);
     for (i = 0; i < edgeCount; i++) {
         const char *labelA = second->vertices[edges[i].startIdx].label;
@@ -166,7 +166,7 @@ static int subgraphs(const char *outFile,
         fprintf(fp, "(%s,%s) %s\n", labelA, labelB, inFirstEdge ? "+" : "-");
     }
 
-    /* --- verdict line --- */
+    /* verdict */
     if (allVerticesOk && allEdgesOk) {
         fprintf(fp, "%s is a subgraph of %s.\n", secondName, firstName);
     } else {
@@ -176,8 +176,6 @@ static int subgraphs(const char *outFile,
     fclose(fp);
     return (allVerticesOk && allEdgesOk);
 }
-
-/* ---------- main ---------- */
 
 int main(void)
 {
